@@ -1,0 +1,202 @@
+[
+  {
+    "id": "Q001",
+    "question": "What is the recommended soil pH range for growing chickpeas?",
+    "expected_answer": "Chickpeas grow best in well-drained soils with a pH between 6.0 and 7.5.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "easy",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q002",
+    "question": "What are the three main nursery raising methods for rice paddy in Myanmar?",
+    "expected_answer": "The three main nursery raising methods for rice paddy are the Wet Bed Method (WBM), the Dry Bed Method (DBM), and the Dapog Method (DM).",
+    "source_document": "crop_management.pdf",
+    "difficulty": "medium",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q003",
+    "question": "What is crop rotation and why is it important?",
+    "expected_answer": "Crop rotation is the practice of growing different crops sequentially on the same land. It helps maintain soil fertility, breaks pest and disease cycles, and improves overall crop yield.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q004",
+    "question": "What are stone lines used for in soil conservation?",
+    "expected_answer": "Stone lines are used to reduce soil erosion and runoff on slopes. They are placed along contours and spaced 15-30 metres apart. Over time they help form natural terraces and are suitable for gentle slopes with annual rainfall of 200-750mm.",
+    "source_document": "farmer_field_schools.pdf",
+    "difficulty": "medium",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q005",
+    "question": "What is mulching and what are its benefits?",
+    "expected_answer": "Mulching involves covering the soil surface with organic material such as crop residues or leaves. It helps retain soil moisture, suppress weeds, regulate soil temperature, and improve soil fertility as the material decomposes.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q006",
+    "question": "What is the Dapog method of nursery raising for rice?",
+    "expected_answer": "The Dapog method uses a 100 square metre field with a seed rate of 40-50 kg per hectare. Seeds are sown on banana leaves or plastic sheets. The nursery is transplanted after 9-14 days and is suitable for short duration varieties.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "hard",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q007",
+    "question": "What are good agricultural practices (GAP) for water management?",
+    "expected_answer": "Good agricultural practices for water management include using water efficiently through drip or furrow irrigation, avoiding waterlogging, monitoring soil moisture, and applying water at the right crop growth stages to minimise waste.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "medium",
+    "category": "water_management"
+  },
+  {
+    "id": "Q008",
+    "question": "What is succession planting and when should it be used?",
+    "expected_answer": "Succession planting involves planting the same crop at regular intervals so that harvests are staggered over time rather than all at once. It ensures a continuous supply of produce and reduces market glut.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q009",
+    "question": "How does water harvesting help farmers in dry regions?",
+    "expected_answer": "Water harvesting collects and stores rainfall for use during dry periods. It increases available water resources for crops in areas where irrigation is not feasible, improving yields and food security in dryland farming systems.",
+    "source_document": "farmer_field_schools.pdf",
+    "difficulty": "medium",
+    "category": "water_management"
+  },
+  {
+    "id": "Q010",
+    "question": "What are raised beds and what advantages do they offer?",
+    "expected_answer": "Raised beds are elevated planting areas with improved drainage and soil structure. They warm up faster in spring, allow better root development, reduce soil compaction from foot traffic, and make weeding and harvesting easier.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q011",
+    "question": "What records should farmers keep according to good agricultural practices?",
+    "expected_answer": "Farmers should keep records of agrochemical use including product names, application rates, timing, and pre-harvest intervals. Records of planting dates, yields, and inputs help with traceability and improving farm management decisions.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "medium",
+    "category": "farm_management"
+  },
+  {
+    "id": "Q012",
+    "question": "What is the purpose of farmer field schools?",
+    "expected_answer": "Farmer field schools are training programmes where the field is the classroom. Farmers learn by doing, conducting their own comparative studies and experiments. The goal is to empower farmers to make their own informed decisions and apply specific field management skills.",
+    "source_document": "farmer_field_schools.pdf",
+    "difficulty": "easy",
+    "category": "farm_management"
+  },
+  {
+    "id": "Q013",
+    "question": "What are grass strips and how do they prevent soil erosion?",
+    "expected_answer": "Grass strips are dense lines of grass planted along contours on slopes. They act as barriers that slow runoff and trap sediment. Over time, silt builds up in front of the strips forming natural benches that reduce erosion.",
+    "source_document": "farmer_field_schools.pdf",
+    "difficulty": "medium",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q014",
+    "question": "What are the key requirements for selecting a good farm location?",
+    "expected_answer": "A good farm location requires adequate sunlight, good soil quality, a reliable water source, shelter from strong winds, and easy access for farming operations and transportation of produce.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "farm_management"
+  },
+  {
+    "id": "Q015",
+    "question": "How should agrochemicals be stored according to good agricultural practices?",
+    "expected_answer": "Agrochemicals should be stored according to legal requirements, kept in their original containers, stored away from food and water sources, kept locked and away from children, and disposed of according to local regulations.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "medium",
+    "category": "pest_management"
+  },
+  {
+    "id": "Q016",
+    "question": "What is integrated crop management?",
+    "expected_answer": "Integrated crop management combines multiple farming practices including soil health management, crop rotation, water management, and biological pest control to achieve sustainable crop production while minimising environmental impact.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "hard",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q017",
+    "question": "What is the Wet Bed Method for rice nursery raising?",
+    "expected_answer": "The Wet Bed Method is used when water availability is high. A seed rate of 30-50 kg is sown in a puddled and levelled bed. Seedlings are transplanted to the main field after 15-21 days.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "medium",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q018",
+    "question": "Why is food safety important in good agricultural practices?",
+    "expected_answer": "Food safety is important to protect consumer health, meet market requirements, and ensure produce is free from harmful levels of pesticide residues, pathogens, and contaminants. Global food trade requires compliance with food safety standards.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "easy",
+    "category": "farm_management"
+  },
+  {
+    "id": "Q019",
+    "question": "What causes land degradation according to the farmer field schools guide?",
+    "expected_answer": "Land degradation is caused by unsustainable farming practices including burning and clearing of forests, planting on steep slopes, overgrazing, overcropping, and over-utilisation of groundwater resources driven by population growth.",
+    "source_document": "farmer_field_schools.pdf",
+    "difficulty": "medium",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q020",
+    "question": "What is square foot gardening?",
+    "expected_answer": "Square foot gardening is a method of intensive planting where the growing area is divided into small square sections each typically one foot by one foot. It maximises use of space and is suitable for small home gardens.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "crop_management"
+  },
+  {
+    "id": "Q021",
+    "question": "How does crop rotation improve soil fertility?",
+    "expected_answer": "Crop rotation improves soil fertility by alternating nitrogen-fixing legumes with other crops, breaking pest and disease cycles, reducing nutrient depletion from growing the same crop repeatedly, and improving soil structure through varied root systems.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "medium",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q022",
+    "question": "What is the role of organic matter in soil health?",
+    "expected_answer": "Organic matter improves soil structure, increases water retention, provides nutrients as it decomposes, supports beneficial soil organisms, and helps prevent erosion. Adding compost and crop residues maintains and builds organic matter levels.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "medium",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q023",
+    "question": "What weed control methods are recommended for small farms?",
+    "expected_answer": "Recommended weed control methods include manual weeding, mulching to suppress weed growth, crop rotation to break weed cycles, and timely cultivation before weeds set seed. Chemical control should follow label instructions and safety guidelines.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "pest_management"
+  },
+  {
+    "id": "Q024",
+    "question": "What is conservation agriculture and what are its main principles?",
+    "expected_answer": "Conservation agriculture is a farming approach based on three principles: minimum soil disturbance through reduced or zero tillage, permanent soil cover using mulch or cover crops, and crop rotation or intercropping to maintain soil health and biodiversity.",
+    "source_document": "farmer_field_schools.pdf",
+    "difficulty": "hard",
+    "category": "soil_management"
+  },
+  {
+    "id": "Q025",
+    "question": "What factors affect crop yield according to good agricultural practices?",
+    "expected_answer": "Crop yield is affected by soil health, water availability, nutrient management, pest and disease control, choice of appropriate varieties, planting time, and adherence to good agricultural practices throughout the crop cycle.",
+    "source_document": "good_agricultural_practices.pdf",
+    "difficulty": "medium",
+    "category": "crop_management"
+  }
+]
