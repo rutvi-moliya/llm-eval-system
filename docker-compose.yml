@@ -1,0 +1,47 @@
+# LLM Regression Detection System - Docker Compose:
+# Runs the eval system locally with one command: docker-compose up
+# Usage: docker-compose up --build
+
+version: "3.9"
+
+services:
+  eval-system:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Container name for easy reference
+    container_name: llm-eval-system
+
+    # Inject secrets and config from .env file at runtime
+    # GOOGLE_API_KEY is never baked into the image
+    env_file:
+      - .env
+
+    # Override specific environment variables
+    environment:
+      - VECTOR_DB_DIR=/app/agri_db
+      - REPORTS_DIR=/app/reports
+      - GOLDEN_DATASET_PATH=/app/data/golden_dataset.json
+      - DATABASE_PATH=/app/data/eval_results.db
+      - EMBEDDINGS_MODEL=models/gemini-embedding-001
+      - LLM_MODEL=gemini-2.5-flash
+      - NUM_RETRIEVED_DOCS=6
+      - TEMPERATURE=0.0
+      - WARN_THRESHOLD=0.03
+      - FAIL_THRESHOLD=0.08
+
+    # Mount volumes so data persists between container runs
+    volumes:
+      # Vector store — mount from agri-crop-qa project
+      # Update this path to point to your local agri_db folder
+      - ./agri_db:/app/agri_db
+
+      # Reports- generated HTML reports saved to host machine
+      - ./reports:/app/reports
+
+      # Database - SQLite results persist between runs
+      - ./data:/app/data
+
+    # Exit after pipeline completes
+    restart: "no"
