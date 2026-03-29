@@ -9,9 +9,9 @@ from typing import Optional
 
 from langchain_chroma import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
 from langchain_core.documents import Document
 
 
@@ -68,73 +68,48 @@ def create_qa_chain(
     top_k: int = NUM_RETRIEVED_DOCS,
     temperature: float = TEMPERATURE,
 ):
-    """
-    Create a retrieval-augmented generation chain using Gemini.
-
-    Args:
-        vectorstore: Chroma vector store to retrieve from.
-        top_k: Number of document chunks to retrieve per query.
-        temperature: LLM sampling temperature (0.0 = deterministic).
-
-    Returns:
-        A LangChain retrieval chain ready for invoke().
-    """
     llm = ChatGoogleGenerativeAI(
         model=LLM_MODEL,
         temperature=temperature,
         google_api_key=GOOGLE_API_KEY,
     )
 
+    retriever = vectorstore.as_retriever(search_kwargs={"k": top_k})
+
     prompt = ChatPromptTemplate.from_messages([
         (
             "system",
             "You are an agricultural assistant. Answer ONLY using the provided context.\n"
             "If the answer is not in the context, say: 'I don't know based on the documents.'\n"
-            "Keep answers concise and practical.",
+            "Keep answers concise and practical.\n\nContext:\n{context}",
         ),
-        (
-            "human",
-            "Question: {input}\n\nContext:\n{context}",
-        ),
+        ("human", "{question}"),
     ])
 
-    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": top_k})
-    qa_chain = create_retrieval_chain(retriever, combine_docs_chain)
+    def format_docs(docs):
+        return "\n\n".join(doc.page_content for doc in docs)
 
-    return qa_chain
+    chain = (
+        {"context": retriever | format_docs, "question": RunnablePassthrough()}
+        | prompt
+        | llm
+        | StrOutputParser()
+    )
+
+    return {"chain": chain, "retriever": retriever}
 
 # Ask a Question
-
 def ask_question(qa_chain, question: str) -> dict:
-    """
-    Run a single question through the RAG pipeline.
-
-    Args:
-        qa_chain: A LangChain retrieval chain from create_qa_chain().
-        question: The user's natural language question.
-
-    Returns:
-        Dictionary with keys:
-            "answer" (str): The generated answer text.
-            "sources" (list[Document]): Retrieved source chunks used.
-            "error" (str | None): Error message if the call failed.
-    """
     if not question or not question.strip():
-        return {
-            "answer": "",
-            "sources": [],
-            "error": "Empty question provided.",
-        }
+        return {"answer": "", "sources": [], "error": "Empty question provided."}
 
     try:
-        result = qa_chain.invoke({"input": question})
-        answer: str = (
-            result.get("answer")
-            or result.get("output_text")
-            or "No answer returned."
-        )
-        sources: list[Document] = result.get("context", [])
+        chain = qa_chain["chain"]
+        retriever = qa_chain["retriever"]
+
+        answer = chain.invoke(question)
+        sources = retriever.invoke(question)
+
         return {"answer": answer, "sources": sources, "error": None}
 
     except Exception as e:
