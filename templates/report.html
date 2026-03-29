@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eval Report {{ run_id }}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            padding: 24px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .header p { opacity: 0.7; font-size: 14px; }
+
+        /* Status Banner */
+        .status-banner {
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-PASS { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status-WARN { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .status-FAIL { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .status-NO_BASELINE { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+        /* Cards Grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .card .label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .card.pass .value { color: #28a745; }
+        .card.warn .value { color: #ffc107; }
+        .card.fail .value { color: #dc3545; }
+
+        /* Score Bar */
+        .score-bar-container {
+            background: white;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .score-bar-container h2 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+
+        .score-bar {
+            background: #e9ecef;
+            border-radius: 999px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .score-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            transition: width 0.5s ease;
+        }
+
+        .score-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        /* Trend Chart */
+        .trend-section {
+            background: white;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .trend-section h2 { font-size: 16px; margin-bottom: 16px; }
+
+        .trend-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            height: 120px;
+        }
+
+        .trend-bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+        }
+
+        .trend-bar {
+            width: 100%;
+            background: linear-gradient(180deg, #4361ee, #3a0ca3);
+            border-radius: 4px 4px 0 0;
+            min-height: 4px;
+        }
+
+        .trend-label {
+            font-size: 10px;
+            color: #6c757d;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .trend-score {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        /* Results Table */
+        .table-section {
+            background: white;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        .table-section h2 { font-size: 16px; margin-bottom: 16px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #495057;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+        }
+
+        tr:hover td { background: #f8f9fa; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-PASS { background: #d4edda; color: #155724; }
+        .badge-WARN { background: #fff3cd; color: #856404; }
+        .badge-FAIL { background: #f8d7da; color: #721c24; }
+        .badge-NEW  { background: #d1ecf1; color: #0c5460; }
+        .badge-ERROR { background: #e2e3e5; color: #383d41; }
+
+        .badge-easy   { background: #d4edda; color: #155724; }
+        .badge-medium { background: #fff3cd; color: #856404; }
+        .badge-hard   { background: #f8d7da; color: #721c24; }
+
+        .score-value { font-weight: 600; font-size: 14px; }
+        .delta-positive { color: #28a745; }
+        .delta-negative { color: #dc3545; }
+        .delta-neutral  { color: #6c757d; }
+
+        .answer-text {
+            max-width: 300px;
+            white-space: normal;
+            word-wrap: break-word;
+            color: #495057;
+            line-height: 1.4;
+        }
+
+        .error-text { color: #dc3545; font-style: italic; }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #adb5bd;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🌾 LLM Regression Detection System</h1>
+        <p>Run ID: {{ run_id }} &nbsp;|&nbsp; Generated: {{ generated_at }}</p>
+        {% if baseline_average > 0 %}
+        <p>Baseline Average: {{ "%.4f"|format(baseline_average) }} &nbsp;|&nbsp;
+           Current Average: {{ "%.4f"|format(average_score) }} &nbsp;|&nbsp;
+           Delta: <span style="color: {% if average_delta >= 0 %}#90ee90{% else %}#ff6b6b{% endif %}">
+               {{ "%+.4f"|format(average_delta) }}
+           </span>
+        </p>
+        {% endif %}
+    </div>
+
+    <!-- Status Banner -->
+    <div class="status-banner status-{{ overall_status }}">
+        {% if overall_status == "PASS" %}✅ All checks passed — no regressions detected.
+        {% elif overall_status == "WARN" %}⚠️ {{ warn_count }} warning(s) detected — review recommended.
+        {% elif overall_status == "FAIL" %}❌ {{ fail_count }} regression(s) detected — pipeline FAILED.
+        {% elif overall_status == "NO_BASELINE" %}ℹ️ No baseline found — this run is now the baseline.
+        {% endif %}
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="cards">
+        <div class="card">
+            <div class="value">{{ total_questions }}</div>
+            <div class="label">Total Questions</div>
+        </div>
+        <div class="card">
+            <div class="value">{{ "%.3f"|format(average_score) }}</div>
+            <div class="label">Average Score</div>
+        </div>
+        <div class="card pass">
+            <div class="value">{{ pass_count }}</div>
+            <div class="label">Passed</div>
+        </div>
+        <div class="card warn">
+            <div class="value">{{ warn_count }}</div>
+            <div class="label">Warnings</div>
+        </div>
+        <div class="card fail">
+            <div class="value">{{ fail_count }}</div>
+            <div class="label">Failed</div>
+        </div>
+        <div class="card">
+            <div class="value">{{ new_count }}</div>
+            <div class="label">New</div>
+        </div>
+    </div>
+
+    <!-- Score Bar -->
+    <div class="score-bar-container">
+        <h2>Overall Score</h2>
+        <div class="score-bar">
+            <div class="score-fill" style="width: {{ (average_score * 100)|round|int }}%"></div>
+        </div>
+        <div class="score-labels">
+            <span>0.0</span>
+            <span>{{ "%.4f"|format(average_score) }}</span>
+            <span>1.0</span>
+        </div>
+    </div>
+
+    <!-- Trend Chart -->
+    {% if run_history %}
+    <div class="trend-section">
+        <h2>Score Trend (Last {{ run_history|length }} Runs)</h2>
+        <div class="trend-chart">
+            {% for run in run_history|reverse %}
+            <div class="trend-bar-wrapper">
+                <div class="trend-score">{{ "%.2f"|format(run.average_score) }}</div>
+                <div class="trend-bar" style="height: {{ (run.average_score * 100)|round|int }}px"></div>
+                <div class="trend-label">{{ run.run_id[-6:] }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Results Table -->
+    <div class="table-section">
+        <h2>Question-by-Question Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Expected Answer</th>
+                    <th>Actual Answer</th>
+                    <th>Score</th>
+                    <th>Delta</th>
+                    <th>Status</th>
+                    <th>Difficulty</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in question_rows %}
+                <tr>
+                    <td><strong>{{ row.id }}</strong></td>
+                    <td class="answer-text">{{ row.question }}</td>
+                    <td class="answer-text">{{ row.expected }}</td>
+                    <td class="answer-text">
+                        {% if row.error %}
+                            <span class="error-text">Error: {{ row.error }}</span>
+                        {% else %}
+                            {{ row.actual }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="score-value">{{ "%.4f"|format(row.score) }}</span>
+                    </td>
+                    <td>
+                        {% if row.regression_status == "NEW" %}
+                            <span class="delta-neutral">—</span>
+                        {% elif row.score_delta >= 0 %}
+                            <span class="delta-positive">{{ "%+.4f"|format(row.score_delta) }}</span>
+                        {% else %}
+                            <span class="delta-negative">{{ "%+.4f"|format(row.score_delta) }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="badge badge-{{ row.regression_status }}">
+                            {{ row.regression_status }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge badge-{{ row.difficulty }}">
+                            {{ row.difficulty }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        LLM Regression Detection System &nbsp;|&nbsp; Run {{ run_id }}
+    </div>
+
+</div>
+</body>
+</html>
