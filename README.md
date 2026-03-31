@@ -212,7 +212,27 @@ Every run generates a self-contained HTML report showing:
 - Pass/Warn/Fail badges per question
 
 ---
+## Demo — Regression Detection in Action
 
+### Run 1 — Establish Baseline
+![Run 1 Baseline](docs/demo_run1_baseline.jpeg)
+Average score: **0.7608** | Status: **NO_BASELINE** — first run stored as baseline.
+
+### Run 2 — Stable System (No Changes)
+![Run 2 Stable](docs/demo_run2_stable.jpeg)
+Average score: **0.7592** | Delta: -0.0016 | Status: **PASS** — no regressions detected.
+
+### Run 3 — Deliberate Regression (Bad Config)
+Reduced `NUM_RETRIEVED_DOCS=1` and `CHUNK_SIZE=200` to simulate a bad configuration change.
+
+![Run 3 Fail](docs/demo_run3_fail.jpeg)
+Average score: **0.6037** | Delta: -0.1200 | Status: **FAIL** — 7 regressions detected, pipeline blocked.
+
+### Run 4 — Recovery (Config Reverted)
+Reverted to `NUM_RETRIEVED_DOCS=6` and `CHUNK_SIZE=1000`.
+
+![Run 4 Recovery](docs/demo_run4_recovery.jpeg)
+Average score: **0.8049** | Delta: +0.2012 | Status: **PASS** — system recovered.
 ## JIRA
 
 Project key: **LES** - 29 tickets across 3 sprints.
