@@ -160,10 +160,10 @@ Thresholds are configurable via `.env` — no code changes needed.
 
 The GitHub Actions workflow runs automatically on every push to `main`:
 
-1. **Run Tests** — 23 pytest tests with mocked API calls
-2. **Validate Dataset** — checks golden_dataset.json structure
-3. **Run Evaluation** — full pipeline against live RAG system
-4. **Upload Report** — HTML report saved as GitHub Actions artifact
+1. **Run Tests** - 23 pytest tests with mocked API calls
+2. **Validate Dataset** - checks golden_dataset.json structure
+3. **Run Evaluation** - full pipeline against live RAG system
+4. **Upload Report** - HTML report saved as GitHub Actions artifact
 
 ---
 
