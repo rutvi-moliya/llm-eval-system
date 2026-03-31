@@ -188,14 +188,14 @@ First run establishes the baseline. Average score: **0.7608**. All questions eva
 ```bash
 python -m src.main  
 ```
-Second run with no changes. Average score: **0.7592**. Delta: -0.0016. **Pipeline PASSED** — no regressions detected.
+Second run with no changes. Average score: **0.7592**. Delta: -0.0016. **Pipeline PASSED** - no regressions detected.
 
 ### Run 3 — Deliberate Regression (Bad Config)
 Changed `NUM_RETRIEVED_DOCS=1` and `CHUNK_SIZE=200` to simulate a bad configuration change.
 ```bash
 python -m src.main
 ```
-Average score dropped to **0.6037**. 7 regressions detected, 3 warnings. **Pipeline FAILED** — would block merge in GitHub Actions.
+Average score dropped to **0.6037**. 7 regressions detected, 3 warnings. **Pipeline FAILED** - would block merge in GitHub Actions.
 
 ### Run 4 — Recovery (Config Reverted)
 Reverted to `NUM_RETRIEVED_DOCS=6` and `CHUNK_SIZE=1000`.
