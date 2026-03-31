@@ -176,6 +176,41 @@ Full project documentation is available in Confluence:
 - Threshold Configuration Guide
 - Sprint Review and Retrospective
 
+## Demo — Regression Detection in Action
+
+### Run 1 — Establish Baseline
+```bash
+python -m src.main
+```
+First run establishes the baseline. Average score: **0.7608**. All questions evaluated, results stored in SQLite.
+
+### Run 2 — Stable System (No Changes)
+```bash
+python -m src.main  
+```
+Second run with no changes. Average score: **0.7592**. Delta: -0.0016. **Pipeline PASSED** — no regressions detected.
+
+### Run 3 — Deliberate Regression (Bad Config)
+Changed `NUM_RETRIEVED_DOCS=1` and `CHUNK_SIZE=200` to simulate a bad configuration change.
+```bash
+python -m src.main
+```
+Average score dropped to **0.6037**. 7 regressions detected, 3 warnings. **Pipeline FAILED** — would block merge in GitHub Actions.
+
+### Run 4 — Recovery (Config Reverted)
+Reverted to `NUM_RETRIEVED_DOCS=6` and `CHUNK_SIZE=1000`.
+```bash
+python -m src.main
+```
+Average score recovered to **0.8049**. **Pipeline PASSED** — system back to healthy state.
+
+### HTML Report
+Every run generates a self-contained HTML report showing:
+- Score trend across last 5 runs
+- Per-question breakdown with expected vs actual answers
+- Regression warnings highlighted in red
+- Pass/Warn/Fail badges per question
+
 ---
 
 ## JIRA
