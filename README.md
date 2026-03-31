@@ -36,7 +36,6 @@ Every time code is pushed to GitHub, this system:
 ---
 
 ## Project Structure
-
 ```
 llm-eval-system/
 ├── src/
@@ -58,6 +57,11 @@ llm-eval-system/
 ├── tests/
 │   ├── test_evaluator.py      # Tests for eval pipeline (13 tests)
 │   └── test_rag_system.py     # Tests for RAG wrapper (10 tests)
+├── docs/
+│   ├── demo_run1_baseline.jpeg    # Run 1 - baseline established
+│   ├── demo_run2_stable.jpeg      # Run 2 - stable, no regressions
+│   ├── demo_run3_fail.jpeg        # Run 3 - regressions detected
+│   └── demo_run4_recovery.jpeg    # Run 4 - system recovered
 ├── .github/
 │   └── workflows/
 │       └── eval.yml           # GitHub Actions CI/CD pipeline
