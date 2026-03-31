@@ -202,7 +202,7 @@ Reverted to `NUM_RETRIEVED_DOCS=6` and `CHUNK_SIZE=1000`.
 ```bash
 python -m src.main
 ```
-Average score recovered to **0.8049**. **Pipeline PASSED** — system back to healthy state.
+Average score recovered to **0.8049**. **Pipeline PASSED** - system back to healthy state.
 
 ### HTML Report
 Every run generates a self-contained HTML report showing:
@@ -215,4 +215,4 @@ Every run generates a self-contained HTML report showing:
 
 ## JIRA
 
-Project key: **LES** — 29 tickets across 3 sprints.
+Project key: **LES** - 29 tickets across 3 sprints.
