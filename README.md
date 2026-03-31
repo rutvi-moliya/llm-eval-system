@@ -24,7 +24,7 @@ Every time code is pushed to GitHub, this system:
 |---|---|
 | Language | Python 3.11 |
 | LLM | Google Gemini 2.5 Flash |
-| Embeddings | Gemini Embedding 001 |
+| Embeddings | OpenAI text-embedding-3-small |
 | Vector Store | ChromaDB |
 | RAG Framework | LangChain |
 | Database | SQLite |
