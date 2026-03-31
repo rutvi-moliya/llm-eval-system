@@ -14,12 +14,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # API Keys
-GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
+OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
 
-if not GOOGLE_API_KEY:
+if not OPENAI_API_KEY:
     sys.exit(
-        "ERROR: GOOGLE_API_KEY is not set.\n"
-        "Add it to your .env file: GOOGLE_API_KEY=your_key_here"
+        "ERROR: OPENAI_API_KEY is not set.\n"
+        "Add it to your .env file: OPENAI_API_KEY=your_key_here"
     )
 
 

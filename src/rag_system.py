@@ -50,7 +50,7 @@ def load_vector_store() -> Optional[Chroma]:
     embeddings = GoogleGenerativeAIEmbeddings(
         model=EMBEDDINGS_MODEL,
         google_api_key=GOOGLE_API_KEY,
-        task_type="retrieval_document",
+        task_type="retrieval_query",
     )
 
     vectorstore = Chroma(

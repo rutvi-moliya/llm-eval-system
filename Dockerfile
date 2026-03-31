@@ -44,6 +44,6 @@ ENV PYTHONUNBUFFERED=1 \
     REPORTS_DIR=/app/reports \
     GOLDEN_DATASET_PATH=/app/data/golden_dataset.json \
     DATABASE_PATH=/app/data/eval_results.db
-
+    OPENAI_API_KEY=""
 # Run the evaluation pipeline
 ENTRYPOINT ["python", "src/main.py"]

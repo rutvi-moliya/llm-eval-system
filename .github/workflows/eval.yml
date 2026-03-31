@@ -36,6 +36,7 @@ jobs:
         run: pytest tests/ -v --tb=short
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
   evaluate:
     name: Run Evaluation Pipeline
@@ -58,11 +59,13 @@ jobs:
         run: python scripts/validate_dataset.py
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Run evaluation pipeline
         run: python src/main.py
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           VECTOR_DB_DIR: agri_db
           EMBEDDINGS_MODEL: models/gemini-embedding-001
           LLM_MODEL: gemini-2.5-flash

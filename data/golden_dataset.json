@@ -9,11 +9,11 @@
   },
   {
     "id": "Q002",
-    "question": "What are the three main nursery raising methods for rice paddy in Myanmar?",
-    "expected_answer": "The three main nursery raising methods for rice paddy are the Wet Bed Method (WBM), the Dry Bed Method (DBM), and the Dapog Method (DM).",
+    "question": "How do you make a chile pepper insecticide spray from fresh peppers?",
+    "expected_answer": "Blend or puree half a cup of fresh chile peppers with one cup of water, then add one quart of water and bring to a boil. Let it sit until cooled, strain out the chile material, add several drops of liquid soap, and spray on infested plants.",
     "source_document": "crop_management.pdf",
     "difficulty": "medium",
-    "category": "crop_management"
+    "category": "pest_management"
   },
   {
     "id": "Q003",
@@ -41,10 +41,10 @@
   },
   {
     "id": "Q006",
-    "question": "What is the Dapog method of nursery raising for rice?",
-    "expected_answer": "The Dapog method uses a 100 square metre field with a seed rate of 40-50 kg per hectare. Seeds are sown on banana leaves or plastic sheets. The nursery is transplanted after 9-14 days and is suitable for short duration varieties.",
+    "question": "What are the soil and climate requirements for growing Rambutan?",
+    "expected_answer": "Rambutan grows best in deep clay-loam or rich well-drained sandy loam soil rich in organic matter. The ideal soil pH is between 4.5 and 6.5. It requires frequent irrigation as lack of water prevents flowering and fruiting.",
     "source_document": "crop_management.pdf",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "category": "crop_management"
   },
   {
@@ -121,19 +121,19 @@
   },
   {
     "id": "Q016",
-    "question": "What is integrated crop management?",
-    "expected_answer": "Integrated crop management combines multiple farming practices including soil health management, crop rotation, water management, and biological pest control to achieve sustainable crop production while minimising environmental impact.",
-    "source_document": "good_agricultural_practices.pdf",
-    "difficulty": "hard",
-    "category": "crop_management"
+    "question": "What are the main macro-elements that plants require for normal growth?",
+    "expected_answer": "The main macro-elements plants require are carbon, hydrogen, oxygen, nitrogen, potassium, phosphorous, calcium, magnesium and sulphur. These are required in relatively large quantities compared to trace elements.",
+    "source_document": "crop_management.pdf",
+    "difficulty": "easy",
+    "category": "soil_management"
   },
   {
     "id": "Q017",
-    "question": "What is the Wet Bed Method for rice nursery raising?",
-    "expected_answer": "The Wet Bed Method is used when water availability is high. A seed rate of 30-50 kg is sown in a puddled and levelled bed. Seedlings are transplanted to the main field after 15-21 days.",
+    "question": "What pests and diseases affect Rambutan trees?",
+    "expected_answer": "Rambutan is affected by pests including fruit borer, leaf eating loofer, thrips, mealy bugs and mites. Common diseases include powdery mildew, vein necrosis and sooty mold.",
     "source_document": "crop_management.pdf",
     "difficulty": "medium",
-    "category": "crop_management"
+    "category": "pest_management"
   },
   {
     "id": "Q018",
@@ -145,11 +145,11 @@
   },
   {
     "id": "Q019",
-    "question": "What causes land degradation according to the farmer field schools guide?",
-    "expected_answer": "Land degradation is caused by unsustainable farming practices including burning and clearing of forests, planting on steep slopes, overgrazing, overcropping, and over-utilisation of groundwater resources driven by population growth.",
-    "source_document": "farmer_field_schools.pdf",
+    "question": "What nutrients does oil spray insecticide control and how is it made?",
+    "expected_answer": "Oil spray insecticide controls aphids, mites and thrips. It is made by mixing one cup of vegetable oil with one tablespoon of soap, shaking thoroughly. When ready to apply, add two teaspoons of the mix to one quart of water.",
+    "source_document": "crop_management.pdf",
     "difficulty": "medium",
-    "category": "soil_management"
+    "category": "pest_management"
   },
   {
     "id": "Q020",
