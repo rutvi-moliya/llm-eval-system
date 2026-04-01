@@ -237,6 +237,19 @@ Reverted to `NUM_RETRIEVED_DOCS=6` and `CHUNK_SIZE=1000`.
 
 ![Run 4 Recovery](docs/demo_run4_recovery.jpeg)
 Average score: **0.8049** | Delta: +0.2012 | Status: **PASS** — system recovered.
+
+## Documentation
+
+Full project documentation is available in Confluence:
+
+| Page | Description |
+|---|---|
+| [Project Architecture Overview](https://rutvimoliya.atlassian.net/wiki/spaces/LRDS/pages/65871/Project+Architecture+Overview) | System design, tech stack, data flow |
+| [Chunking Fix Investigation](https://rutvimoliya.atlassian.net/wiki/spaces/LRDS/pages/131274/Chunking+Fix+Investigation) | Root cause analysis of retrieval failures |
+| [How to Add Test Cases](https://rutvimoliya.atlassian.net/wiki/spaces/LRDS/pages/98449/How+to+Add+Test+Cases) | Step-by-step guide for adding questions |
+| [Threshold Configuration Guide](https://rutvimoliya.atlassian.net/wiki/spaces/LRDS/pages/131283/Threshold+Configuration+Guide) | WARN/FAIL threshold explanation |
+| [Sprint Review and Retrospective](https://rutvimoliya.atlassian.net/wiki/spaces/LRDS/pages/98457/Sprint+Review+and+Retrospective) | Project delivery summary |
+
 ## JIRA
 
 Project key: **LES** - 29 tickets across 3 sprints.
